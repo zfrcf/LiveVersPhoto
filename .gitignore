@@ -1,0 +1,8 @@
+.build/
+xtool/
+build-xcode/
+dd/
+*.xcodeproj/
+*.ipa
+Payload/
+.DS_Store

@@ -1,0 +1,52 @@
+name: Construire l'IPA
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  ipa:
+    runs-on: macos-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Versions
+        run: xcodebuild -version && swift --version
+
+      - name: Générer le projet Xcode
+        run: |
+          brew install xcodegen
+          xcodegen generate
+
+      - name: Compiler (sans signature)
+        run: |
+          set -o pipefail
+          xcodebuild build \
+            -project LiveVersPhoto.xcodeproj \
+            -scheme LiveVersPhoto \
+            -configuration Release \
+            -sdk iphoneos \
+            -destination 'generic/platform=iOS' \
+            -derivedDataPath dd \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="" \
+            | tee build.log | grep -E "error|warning: unre|BUILD|\.swift:[0-9]+" || true
+          grep -q "BUILD SUCCEEDED" build.log
+
+      - name: Empaqueter l'IPA (non signé)
+        run: |
+          mkdir Payload
+          cp -R dd/Build/Products/Release-iphoneos/LiveVersPhoto.app Payload/
+          zip -qry LiveVersPhoto-non-signe.ipa Payload
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: LiveVersPhoto-ipa
+          path: LiveVersPhoto-non-signe.ipa
+
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: journal-compilation
+          path: build.log

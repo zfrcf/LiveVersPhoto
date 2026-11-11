@@ -1,0 +1,36 @@
+# Projet Xcode généré par XcodeGen (utilisé par GitHub Actions et sur Mac :
+# `xcodegen generate` puis ouvrir LiveVersPhoto.xcodeproj).
+# Sous Linux, c'est xtool.yml + Package.swift qui servent.
+name: LiveVersPhoto
+options:
+  bundleIdPrefix: fr.perso
+  deploymentTarget:
+    iOS: "17.0"
+targets:
+  LiveVersPhoto:
+    type: application
+    platform: iOS
+    sources:
+      - Sources/LiveVersPhoto
+    info:
+      # Info.plist complet généré ici (celui de la racine est réservé à xtool).
+      path: build-xcode/Info.plist
+      properties:
+        CFBundleDisplayName: "Live → Photo"
+        CFBundleDevelopmentRegion: fr
+        CFBundleLocalizations: [fr]
+        CFBundleShortVersionString: "1.0.0"
+        CFBundleVersion: "1"
+        LSRequiresIPhoneOS: true
+        NSPhotoLibraryUsageDescription: "L'app lit vos Live Photos pour en créer des copies fixes (sans la vidéo) et, si vous l'activez, supprimer les originales."
+        NSPhotoLibraryAddUsageDescription: "L'app enregistre dans votre photothèque les photos fixes créées à partir de vos Live Photos."
+        PHPhotoLibraryPreventAutomaticLimitedAccessAlert: true
+        UILaunchScreen: {}
+        UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: fr.perso.LiveVersPhoto
+        PRODUCT_NAME: LiveVersPhoto
+        SWIFT_VERSION: "5.0"
+        TARGETED_DEVICE_FAMILY: "1"
+        GENERATE_INFOPLIST_FILE: NO

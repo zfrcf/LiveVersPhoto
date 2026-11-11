@@ -1,0 +1,6 @@
+version: 1
+# Identifiant de l'app. Avec un compte Apple gratuit, xtool le préfixe
+# automatiquement (XTL-xxxx.…) au moment de la signature.
+bundleID: fr.perso.LiveVersPhoto
+# Clés fusionnées dans l'Info.plist généré (autorisations Photos, nom affiché).
+infoPath: Info.plist

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Nom sous l'icône -->
+	<key>CFBundleDisplayName</key>
+	<string>Live → Photo</string>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>fr</string>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>fr</string>
+	</array>
+
+	<!-- Lecture + modification de la photothèque (niveau .readWrite) -->
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>L'app lit vos Live Photos pour en créer des copies fixes (sans la vidéo) et, si vous l'activez, supprimer les originales.</string>
+	<!-- Ajout des photos converties -->
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>L'app enregistre dans votre photothèque les photos fixes créées à partir de vos Live Photos.</string>
+
+	<!-- Pas de rappel automatique « accès limité » : l'app affiche son propre bandeau -->
+	<key>PHPhotoLibraryPreventAutomaticLimitedAccessAlert</key>
+	<true/>
+
+	<!-- Écran de lancement vide = app en plein écran -->
+	<key>UILaunchScreen</key>
+	<dict/>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+</dict>
+</plist>
